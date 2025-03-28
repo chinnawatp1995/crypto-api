@@ -19,7 +19,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     // if (!user) {
     // 	throw new AppError('USER_NOT_EXIST');
     // }
-    console.log(payload)
+    // console.log(payload)
     return payload;
   }
 }
