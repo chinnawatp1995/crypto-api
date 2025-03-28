@@ -1,12 +1,13 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { createHmac, randomBytes } from 'crypto';
 import { PrismaService } from 'src/prisma.service';
+import { CreateUserDto } from './dto/user.dto';
 
 @Injectable()
 export class UserService {
     constructor(private prismaService: PrismaService) {}
 
-    async createUser(param: any) {
+    async createUser(param: CreateUserDto) {
 		const { username, password, email } = param
 		const user = await this.getUserByUsername(param.username);
 

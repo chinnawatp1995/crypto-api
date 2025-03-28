@@ -2,6 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import Decimal from 'decimal.js';
 import { PrismaService } from 'src/prisma.service';
 import { WalletService } from 'src/wallet/wallet.service';
+import { CancelOrderDto, SearchQuery } from './dto/order.dto';
 
 @Injectable()
 export class OrderService {
@@ -70,7 +71,8 @@ export class OrderService {
         }
     }
 
-    async cancelOrder(userId: number, orderId: number) {
+    async cancelOrder(cancelOrderParam: CancelOrderDto) {
+        const { userId, orderId } = cancelOrderParam
         const order = await this.prismaService.order.findUnique({
             where: { id: orderId }
         })
@@ -92,7 +94,7 @@ export class OrderService {
         }
     }
 
-    async getOrder(query: any) {
+    async getOrder(query: SearchQuery) {
         const { orderType, src, dest, status } = query;
       
         let srcSym, destSym;

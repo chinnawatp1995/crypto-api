@@ -23,7 +23,7 @@ export class AuthService {
 		return null;
 	}
 
-	async login(username: any, password: any) {
+	async login(username: string, password: string) {
 		const user = await this.validateUser(username, password);
 		if (!user) {
 			throw new BadRequestException('INCORRECT_PASSWORD_OR_USERNAME');

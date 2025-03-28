@@ -12,7 +12,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 		});
 	}
 
-	async validate(payload: any): Promise<any> {
+	async validate(payload: { username: string, iat: number}): Promise<any> {
 		// Note : For sensitive operation , the payload should be checked whether the username is actually exist
 		// const user = await this.systemUserService.getSystemUserByUsername(
 		// 	payload.username,

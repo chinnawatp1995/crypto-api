@@ -1,6 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import Decimal from 'decimal.js';
 import { PrismaService } from 'src/prisma.service';
+import { DepositWithdrawDto } from './dto/wallet.dto';
 
 @Injectable()
 export class WalletService {
@@ -17,8 +18,8 @@ export class WalletService {
         return wallet
     }
 
-    async deposit(userId: number, param: any) { 
-        const { currencySym, amount } = param
+    async deposit(param: DepositWithdrawDto) { 
+        const { userId, currencySym, amount } = param
         let wallet = await this.prismaService.wallet.findUnique({
             where: {
                 userId_currencySym: {
@@ -39,8 +40,8 @@ export class WalletService {
         return updatedWallet
     }
 
-    async withdraw(userId: number, param: any) {
-        const { currencySym, amount } = param
+    async withdraw(param: DepositWithdrawDto) {
+        const { userId, currencySym, amount } = param
         let wallet = await this.prismaService.wallet.findUnique({
             where: {
                 userId_currencySym: {
