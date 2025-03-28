@@ -13,7 +13,7 @@ Before you begin, ensure you have the following installed:
 
 Set up
 ```bash
-yarn add 
+yarn 
 docker-compose up
 yarn prisma migrate dev
 yarn prisma seed
