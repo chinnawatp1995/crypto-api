@@ -24,6 +24,13 @@ Run
 yarn start
 ```
 
+Environment Variable
+create .env file
+DATABASE_URL=your database url
+PORT=3000
+JWT_SECRET=topsecret
+
+
 Using VSCode REST Client
   If you want to test the API using the VSCode REST Client, follow these steps:
   Install the REST Client extension in VSCode.
