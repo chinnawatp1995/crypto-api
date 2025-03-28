@@ -1,7 +1,7 @@
 # Crypto-api
 
 api for crypo exchange support common operations such as place , cancel, read order , create user, authentication system
-*The code is uncleaned and not refactor yet 
+*The code is uncleaned, no test and not refactor yet . If have a problem feel free to raise issues in repository
 
 ## Prerequisites
 
