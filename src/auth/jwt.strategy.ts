@@ -11,7 +11,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: { username: string; iat: number }): Promise<any> {
+  async validate(payload: { username: string; id: number, iat: number }): Promise<any> {
     // Note : For sensitive operation , the payload should be checked whether the username is actually exist
     // const user = await this.systemUserService.getSystemUserByUsername(
     // 	payload.username,
@@ -19,6 +19,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     // if (!user) {
     // 	throw new AppError('USER_NOT_EXIST');
     // }
+    console.log(payload)
     return payload;
   }
 }

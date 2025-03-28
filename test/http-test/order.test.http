@@ -22,11 +22,10 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {   
-    "userId": 1,
     "orderType": "buy",
     "price": 20,
     "amount": 10,
-    "currencySrcSym": "BTC",
+    "currencySrcSym": "USD",
     "currencyDestSym": "DOGE"
 }
 
@@ -37,12 +36,11 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {      
-    "userId": 1,
     "orderType": "sell",
     "price": 20,
-    "amount": 10,
-    "currencySrcSym": "USD",
-    "currencyDestSym": "XRP"
+    "amount": 10000,
+    "currencySrcSym": "THB",
+    "currencyDestSym": "BTC"
 }
 
 ### 
@@ -52,8 +50,7 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {
-    "userId": 1,
-    "orderId": 2
+    "orderId": 4
 }
 
 
@@ -68,6 +65,6 @@ GET {{baseUrl}}/order/search?orderType=buy&src=USD&dest=BTC&status=cancelled
 Authorization: Bearer {{authToken}}
 
 ###
-# @name get-order-status
+# @name get-order-by-status
 GET {{baseUrl}}/order/search?status=cancelled
 Authorization: Bearer {{authToken}}

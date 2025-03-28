@@ -22,8 +22,7 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {   
-    "userId": 1,
-    "currencySym": "USD",
+    "currencySym": "THB",
     "amount": "100000"
 }
 
@@ -35,7 +34,6 @@ Content-Type: application/json
 Authorization: Bearer {{authToken}}
 
 {   
-    "userId": 1,
-    "currencySym": "USD",
+    "currencySym": "THB",
     "amount": "100000"
 }

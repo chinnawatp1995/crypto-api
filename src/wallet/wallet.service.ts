@@ -18,8 +18,8 @@ export class WalletService {
     return wallet;
   }
 
-  async deposit(param: DepositWithdrawDto) {
-    const { userId, currencySym, amount } = param;
+  async deposit(userId: number,param: DepositWithdrawDto) {
+    const { currencySym, amount } = param;
     let wallet = await this.prismaService.wallet.findUnique({
       where: {
         userId_currencySym: {
@@ -41,8 +41,8 @@ export class WalletService {
     return updatedWallet;
   }
 
-  async withdraw(param: DepositWithdrawDto) {
-    const { userId, currencySym, amount } = param;
+  async withdraw(userId: number, param: DepositWithdrawDto) {
+    const { currencySym, amount } = param;
     let wallet = await this.prismaService.wallet.findUnique({
       where: {
         userId_currencySym: {

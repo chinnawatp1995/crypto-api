@@ -10,6 +10,7 @@ import {
 import { OrderService } from './order.service';
 import { AuthGuard } from '@nestjs/passport';
 import { CancelOrderDto, PlaceOrderDto, SearchQuery } from './dto/order.dto';
+import { CurrentUser } from 'src/decorator/currentUser';
 
 @Controller('order')
 export class OrderController {
@@ -17,9 +18,9 @@ export class OrderController {
 
   @Post('buy')
   @UseGuards(AuthGuard('jwt'))
-  async bid(@Body() placeOrderDto: PlaceOrderDto) {
+  async bid(@Body() placeOrderDto: PlaceOrderDto, @CurrentUser('id') userId: number) {
     const res = await this.orderService.placeOrder(
-      placeOrderDto.userId,
+      userId,
       placeOrderDto,
     );
     return res;
@@ -27,9 +28,9 @@ export class OrderController {
 
   @Post('sell')
   @UseGuards(AuthGuard('jwt'))
-  async sell(@Body() placeOrderDto: PlaceOrderDto) {
+  async sell(@Body() placeOrderDto: PlaceOrderDto, @CurrentUser('id') userId: number) {
     const res = await this.orderService.placeOrder(
-      placeOrderDto.userId,
+      userId,
       placeOrderDto,
     );
     return res;
@@ -37,8 +38,8 @@ export class OrderController {
 
   @Post('cancel-order')
   @UseGuards(AuthGuard('jwt'))
-  async cancelOrder(@Body() cancelOrderParam: CancelOrderDto) {
-    const res = await this.orderService.cancelOrder(cancelOrderParam);
+  async cancelOrder(@Body() cancelOrderParam: CancelOrderDto, @CurrentUser('id') userId: number) {
+    const res = await this.orderService.cancelOrder(userId, cancelOrderParam);
     return res;
   }
 

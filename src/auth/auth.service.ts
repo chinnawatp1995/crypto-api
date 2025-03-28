@@ -30,7 +30,7 @@ export class AuthService {
     if (!user) {
       throw new BadRequestException('INCORRECT_PASSWORD_OR_USERNAME');
     }
-    const payload = { username: user.username };
+    const payload = { username: user.username , id: user.id};
     return {
       token: this.jwtService.sign(payload, {
         secret: process.env.JWT_SECRET || 'topsecret',

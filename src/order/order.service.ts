@@ -77,8 +77,8 @@ export class OrderService {
     }
   }
 
-  async cancelOrder(cancelOrderParam: CancelOrderDto) {
-    const { userId, orderId } = cancelOrderParam;
+  async cancelOrder(userId: number, cancelOrderParam: CancelOrderDto) {
+    const { orderId } = cancelOrderParam;
     const order = await this.prismaService.order.findUnique({
       where: { id: orderId },
     });

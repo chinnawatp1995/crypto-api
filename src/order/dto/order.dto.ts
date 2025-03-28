@@ -1,12 +1,10 @@
 export class PlaceOrderDto {
-  userId: number;
   orderType: 'buy' | 'sell';
   price: number;
   amount: number;
 }
 
 export class CancelOrderDto {
-  userId: number;
   orderId: number;
 }
 
