@@ -14,7 +14,7 @@ Before you begin, ensure you have the following installed:
 Set up
 ```bash
 yarn 
-docker-compose up
+docker compose -f 'docker-compose.yaml' up -d --build
 yarn prisma migrate dev
 yarn prisma seed
 ```
