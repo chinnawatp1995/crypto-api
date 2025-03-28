@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { createHmac } from 'crypto';
 import { UserService } from 'src/user/user.service';
@@ -26,7 +26,7 @@ export class AuthService {
 	async login(username: any, password: any) {
 		const user = await this.validateUser(username, password);
 		if (!user) {
-			throw new Error('INCORRECT_PASSWORD_OR_USERNAME');
+			throw new BadRequestException('INCORRECT_PASSWORD_OR_USERNAME');
 		}
 		const payload = { username: user.username };
 		return { token: this.jwtService.sign(payload, { secret: process.env.JWT_SECRET || 'topsecret'}) };

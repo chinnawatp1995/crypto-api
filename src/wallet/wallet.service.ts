@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import Decimal from 'decimal.js';
 import { PrismaService } from 'src/prisma.service';
 
@@ -54,7 +54,7 @@ export class WalletService {
         }
 
         if(Decimal(wallet.balance).comparedTo(Decimal(amount)) < 0){
-            throw new Error('INVALID_AMOUNT')
+            throw new BadRequestException('INVALID_AMOUNT')
         }
 
         const updatedWallet = await this.prismaService.wallet.update({

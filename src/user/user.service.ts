@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { createHmac, randomBytes } from 'crypto';
 import { PrismaService } from 'src/prisma.service';
 
@@ -11,7 +11,7 @@ export class UserService {
 		const user = await this.getUserByUsername(param.username);
 
 		if (user) {
-			throw new Error('USERNAME_ALREADY_EXIST');
+			throw new BadRequestException('USERNAME_ALREADY_EXIST');
 		}
 		const salt = randomBytes(16).toString("hex");
 		const hashedPassword = createHmac('sha256', salt).update(password).digest('hex');
@@ -25,7 +25,7 @@ export class UserService {
 		});
 
 		if (!createResult) {
-			throw new Error('CREATE_USER_FAILED');
+			throw new BadRequestException('CREATE_USER_FAILED');
 		}
 
 		const userInfo = {

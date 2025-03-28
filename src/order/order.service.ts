@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import Decimal from 'decimal.js';
 import { PrismaService } from 'src/prisma.service';
 import { WalletService } from 'src/wallet/wallet.service';
@@ -39,7 +39,7 @@ export class OrderService {
         if(orderType === 'buy'){
             const total = Decimal(price).mul(Decimal(amount))
             if(walletSrc.balance.comparedTo(total) < 0){
-                throw new Error('INSUFFICIENT_WALLET')
+                throw new BadRequestException('INSUFFICIENT_WALLET')
             }
             const order = await this.prismaService.order.create({
                 data: {
@@ -53,7 +53,7 @@ export class OrderService {
             })
         }else if(orderType === 'sell'){
             if(walletSrc.balance.comparedTo(Decimal(amount)) < 0){
-                throw new Error('INSUFFICIENT_WALLET')
+                throw new BadRequestException('INSUFFICIENT_WALLET')
             }
             const order = await this.prismaService.order.create({
                 data: {
@@ -73,7 +73,7 @@ export class OrderService {
             where: { id: orderId }
         })
         if(!order){
-            throw new Error('ORDER_NOT_EXIST')
+            throw new BadRequestException('ORDER_NOT_EXIST')
         }
         try{
             const cancelOrder = await this.prismaService.order.update({
@@ -86,7 +86,7 @@ export class OrderService {
             })
             return cancelOrder
         }catch(e){
-            throw new Error('CANCEL_ORDER_FAILED')
+            throw new BadRequestException('CANCEL_ORDER_FAILED')
         }
     }
 
@@ -103,7 +103,7 @@ export class OrderService {
           }))?.symbol;
       
           if (!srcSym) {
-            throw new Error('UNSUPPORT_SOURCE_CURRENCY');
+            throw new BadRequestException('UNSUPPORT_SOURCE_CURRENCY');
           }
         }
       
@@ -115,7 +115,7 @@ export class OrderService {
           }))?.symbol;
       
           if (!destSym) {
-            throw new Error('UNSUPPORT_DESTINATION_CURRENCY');
+            throw new BadRequestException('UNSUPPORT_DESTINATION_CURRENCY');
           }
         }
       
