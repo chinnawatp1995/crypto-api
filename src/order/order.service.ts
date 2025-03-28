@@ -72,7 +72,6 @@ export class OrderService {
         const order = await this.prismaService.order.findUnique({
             where: { id: orderId }
         })
-        console.log(order)
         if(!order){
             throw new Error('ORDER_NOT_EXIST')
         }

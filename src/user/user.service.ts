@@ -7,7 +7,6 @@ export class UserService {
     constructor(private prismaService: PrismaService) {}
 
     async createUser(param: any) {
-		console.log(param)
 		const { username, password, email } = param
 		const user = await this.getUserByUsername(param.username);
 

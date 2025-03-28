@@ -16,7 +16,6 @@ export class OrderController {
     @Post('sell')
     @UseGuards(AuthGuard('jwt'))
     async sell(@Body() param: any){
-        console.log(param)
         const res = await this.orderService.placeOrder(param.userId, param)
         return res
     }

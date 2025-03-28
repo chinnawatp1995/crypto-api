@@ -12,7 +12,6 @@ export class AuthService {
 
 	async validateUser(username: string, password: string) {
 		const user = await this.userService.getUserByUsername(username);
-		console.log(user)
 		if (!user) {
 			return null;
 		}
@@ -29,8 +28,6 @@ export class AuthService {
 		if (!user) {
 			throw new Error('INCORRECT_PASSWORD_OR_USERNAME');
 		}
-		console.log(user)
-		console.log(process.env.JWT_SECRET)
 		const payload = { username: user.username };
 		return { token: this.jwtService.sign(payload, { secret: process.env.JWT_SECRET || 'topsecret'}) };
 	}

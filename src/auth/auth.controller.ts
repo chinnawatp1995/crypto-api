@@ -8,7 +8,6 @@ export class AuthController {
 
     @Post('login')
     async login(@Body() loginDto: LoginDto): Promise<any> {
-        console.log(loginDto)
         const { username, password } = loginDto
         const res = await this.authService.login(username, password)
         return res
