@@ -36,7 +36,7 @@ yarn start
 Using VSCode REST Client
   If you want to test the API using the VSCode REST Client, follow these steps:
   Install the REST Client extension in VSCode.
-  Open the *.test.http file and send the requests.
+  Open the *.test.http file in directory ./test and send the requests.
 
 
 ER Diagram
