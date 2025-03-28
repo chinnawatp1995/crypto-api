@@ -7,7 +7,7 @@ api for crypo exchange support common operations such as place , cancel, read or
 Before you begin, ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/en/) 
-- [Yarn](https://yarnpkg.com/) (version X.X.X or higher)
+- [Yarn](https://yarnpkg.com/) 
 - [Docker] (https://www.docker.com/)
 
 Set up
