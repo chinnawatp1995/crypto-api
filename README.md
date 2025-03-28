@@ -20,11 +20,12 @@ yarn prisma seed
 ```
 
 Environment Variables
-Create a .env file and define the following variables:
+```bash
+// Create a .env file and define the following variables:
 DATABASE_URL=your_database_url
 PORT=your_desired_port
 JWT_SECRET=your_jwt_secret
-
+```
 
 Run
 ```bash
