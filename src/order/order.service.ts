@@ -39,7 +39,7 @@ export class OrderService {
         if(orderType === 'buy'){
             const total = Decimal(price).mul(Decimal(amount))
             if(walletSrc.balance.comparedTo(total) < 0){
-                throw new BadRequestException('INSUFFICIENT_WALLET')
+                throw new BadRequestException('INSUFFICIENT_WALLET, PLEASE_DEPOSIT_FIRST')
             }
             const order = await this.prismaService.order.create({
                 data: {
@@ -53,7 +53,7 @@ export class OrderService {
             })
         }else if(orderType === 'sell'){
             if(walletSrc.balance.comparedTo(Decimal(amount)) < 0){
-                throw new BadRequestException('INSUFFICIENT_WALLET')
+                throw new BadRequestException('INSUFFICIENT_WALLET, PLEASE_DEPOSIT_FIRST')
             }
             const order = await this.prismaService.order.create({
                 data: {
