@@ -1,0 +1,48 @@
+@baseUrl = http://localhost:3000
+
+
+###
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{ 
+    "username": "test-user",
+    "password": "test-password"
+}
+
+###
+@authToken = {{login.response.body.token}}
+###
+
+### 
+# @name deposit
+POST {{baseUrl}}/wallet/deposit
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{   
+    "userId": 1,
+    "currencySym": "USD",
+    "amount": "100000"
+}
+
+
+### 
+# @name withdraw
+POST {{baseUrl}}/wallet/withdraw
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{   
+    "userId": 1,
+    "currencySym": "USD",
+    "amount": "100000"
+}
+
+### 
+# @name get-wallet-by-id
+GET {{baseUrl}}/wallet/2
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+

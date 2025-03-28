@@ -1,0 +1,73 @@
+@baseUrl = http://localhost:3000
+
+
+###
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{ 
+    "username": "test-user",
+    "password": "test-password"
+}
+
+###
+@authToken = {{login.response.body.token}}
+###
+
+### 
+# @name place-buy-order
+POST {{baseUrl}}/order/buy
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{   
+    "userId": 1,
+    "orderType": "buy",
+    "price": 20,
+    "amount": 10,
+    "currencySrcSym": "BTC",
+    "currencyDestSym": "DOGE"
+}
+
+### 
+# @name place-sell-order
+POST {{baseUrl}}/order/sell
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{      
+    "userId": 1,
+    "orderType": "sell",
+    "price": 20,
+    "amount": 10,
+    "currencySrcSym": "USD",
+    "currencyDestSym": "XRP"
+}
+
+### 
+# @name cancel-order
+POST {{baseUrl}}/order/cancel-order
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "userId": 1,
+    "orderId": 2
+}
+
+
+###
+# @name get-orders
+GET {{baseUrl}}/order/search?
+Authorization: Bearer {{authToken}}
+
+###
+# @name get-order-filter
+GET {{baseUrl}}/order/search?orderType=buy&src=USD&dest=BTC&status=cancelled
+Authorization: Bearer {{authToken}}
+
+###
+# @name get-order-status
+GET {{baseUrl}}/order/search?status=cancelled
+Authorization: Bearer {{authToken}}

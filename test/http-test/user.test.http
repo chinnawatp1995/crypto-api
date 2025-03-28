@@ -1,0 +1,33 @@
+@baseUrl = http://localhost:3000
+
+
+###
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{ 
+    "username": "test-user",
+    "password": "test-password"
+}
+
+###
+@authToken = {{login.response.body.token}}
+###
+
+### 
+# @name create-user
+POST {{baseUrl}}/user/create
+Content-Type: application/json
+
+{
+    "username": "test-user",
+    "email": "test-email",
+    "password": "test-password"
+}
+
+### 
+# @name get-user
+GET {{baseUrl}}/user/test-user
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
