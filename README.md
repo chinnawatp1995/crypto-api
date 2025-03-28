@@ -32,4 +32,6 @@ Using VSCode REST Client
 
 ER Diagram
 Below is the entity-relationship diagram for the database schema:
-<img src="prisma-erd.svg" width="600">
+<div style="background-color: white; padding: 10px; display: inline-block;">
+  <img src="prisma-erd.svg" width="600">
+</div>
