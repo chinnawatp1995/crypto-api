@@ -10,7 +10,14 @@ import { WalletModule } from './wallet/wallet.module';
 import { PassportModule } from '@nestjs/passport';
 
 @Module({
-  imports: [ConfigModule.forRoot(), AuthModule, UserModule, OrderModule, WalletModule, PassportModule.register({ defaultStrategy: 'jwt' })],
+  imports: [
+    ConfigModule.forRoot(),
+    AuthModule,
+    UserModule,
+    OrderModule,
+    WalletModule,
+    PassportModule.register({ defaultStrategy: 'jwt' }),
+  ],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })

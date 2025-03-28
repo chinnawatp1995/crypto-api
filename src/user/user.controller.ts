@@ -5,25 +5,34 @@ import { CreateUserDto } from './dto/user.dto';
 
 @Controller('user')
 export class UserController {
-    constructor(private userService: UserService){}
+  constructor(private userService: UserService) {}
 
-    @Post('create')
-    async create(@Body() createUserDto: CreateUserDto) {
-        const res = await this.userService.createUser(createUserDto)
-        return res
-    }
+  @Post('create')
+  async create(@Body() createUserDto: CreateUserDto) {
+    const res = await this.userService.createUser(createUserDto);
+    return res;
+  }
 
-    @Get(':username')
-    @UseGuards(AuthGuard('jwt'))
-    async getUserByUsername(@Param('username') username: string): Promise<{ id: number; username: string; email: string; salt: string; hashedPassword: string; createdAt: Date; } | null>{
-        const res = await this.userService.getUserByUsername(username)
-        return res
-    }
+  @Get(':username')
+  @UseGuards(AuthGuard('jwt'))
+  async getUserByUsername(
+    @Param('username') username: string,
+  ): Promise<{
+    id: number;
+    username: string;
+    email: string;
+    salt: string;
+    hashedPassword: string;
+    createdAt: Date;
+  } | null> {
+    const res = await this.userService.getUserByUsername(username);
+    return res;
+  }
 
-    @Get('list')
-    @UseGuards(AuthGuard('jwt'))
-    async list(){
-        const res = await this.userService.getAll()
-        return res
-    }
+  @Get('list')
+  @UseGuards(AuthGuard('jwt'))
+  async list() {
+    const res = await this.userService.getAll();
+    return res;
+  }
 }

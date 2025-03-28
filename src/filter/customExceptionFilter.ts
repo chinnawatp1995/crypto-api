@@ -1,4 +1,9 @@
-import { ExceptionFilter, Catch, ArgumentsHost, HttpException } from '@nestjs/common';
+import {
+  ExceptionFilter,
+  Catch,
+  ArgumentsHost,
+  HttpException,
+} from '@nestjs/common';
 import { Response } from 'express';
 
 @Catch(HttpException)
@@ -13,7 +18,10 @@ export class CustomExceptionFilter implements ExceptionFilter {
     let message = 'Something went wrong';
     if (typeof exceptionResponse === 'string') {
       message = exceptionResponse;
-    } else if (typeof exceptionResponse === 'object' && exceptionResponse['message']) {
+    } else if (
+      typeof exceptionResponse === 'object' &&
+      exceptionResponse['message']
+    ) {
       message = exceptionResponse['message'];
     }
 
