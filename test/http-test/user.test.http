@@ -7,8 +7,8 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 { 
-    "username": "test-user",
-    "password": "test-password"
+    "username": "admin",
+    "password": "admin"
 }
 
 ###
@@ -28,6 +28,6 @@ Content-Type: application/json
 
 ### 
 # @name get-user
-GET {{baseUrl}}/user/test-user
+GET {{baseUrl}}/user/admin
 Content-Type: application/json
 Authorization: Bearer {{authToken}}

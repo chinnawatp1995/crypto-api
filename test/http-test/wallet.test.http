@@ -7,8 +7,8 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 { 
-    "username": "test-user",
-    "password": "test-password"
+    "username": "admin",
+    "password": "admin"
 }
 
 ###
@@ -39,10 +39,3 @@ Authorization: Bearer {{authToken}}
     "currencySym": "USD",
     "amount": "100000"
 }
-
-### 
-# @name get-wallet-by-id
-GET {{baseUrl}}/wallet/2
-Content-Type: application/json
-Authorization: Bearer {{authToken}}
-
