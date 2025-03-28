@@ -29,3 +29,7 @@ Using VSCode REST Client
   Install the REST Client extension in VSCode.
   Open the *.test.http file and send the requests.
 
+
+ER Diagram
+Below is the entity-relationship diagram for the database schema:
+<img src="prisma-erd.svg" width="600">
