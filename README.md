@@ -19,16 +19,17 @@ yarn prisma migrate dev
 yarn prisma seed
 ```
 
+Environment Variables
+Create a .env file and define the following variables:
+DATABASE_URL=your_database_url
+PORT=your_desired_port
+JWT_SECRET=your_jwt_secret
+
+
 Run
 ```bash
 yarn start
 ```
-
-Environment Variable
-create .env file
-DATABASE_URL=your database url
-PORT=3000
-JWT_SECRET=topsecret
 
 
 Using VSCode REST Client
