@@ -51,6 +51,7 @@ export class OrderService {
                     currencyDestSym
                 }
             })
+            return order
         }else if(orderType === 'sell'){
             if(walletSrc.balance.comparedTo(Decimal(amount)) < 0){
                 throw new BadRequestException('INSUFFICIENT_WALLET, PLEASE_DEPOSIT_FIRST')
@@ -65,6 +66,7 @@ export class OrderService {
                     currencyDestSym
                 }
             })
+            return order
         }
     }
 
